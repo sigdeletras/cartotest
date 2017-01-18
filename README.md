@@ -2,8 +2,8 @@
 Simple table viewer using the CartoDB SQL API. The web application is developed with [Flask](http://flask.pocoo.org/), a microframework for Python based on Werkzeug and Jinja 2.
 
 ##Usage 
-
-- Enter a Carto username and a name of a dataset.
+- Visit the web [https://cartotableviewer.herokuapp.com/](https://cartotableviewer.herokuapp.com/)
+- Enter your Carto username and a name of a dataset.
 - Click 'Load Data'.
 
 ##Enviroment
