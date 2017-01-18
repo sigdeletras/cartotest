@@ -24,9 +24,7 @@ Please refer to pip requirements.txt for list of required modules
 $ pip install -r requirements.txt
 ```
 
-##Run application
-
-### Run local server ###
+## Run local server ##
 
 ```
 $ python app.py
