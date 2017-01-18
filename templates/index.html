@@ -1,0 +1,108 @@
+<html>
+<head>
+  <title>Carto Data Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+  <link href="{{ url_for('static', filename='css/navbar.css') }}" rel="stylesheet" media="screen">
+  <link href="{{ url_for('static', filename='css/cartotableviewer.css') }}" rel="stylesheet" media="screen">
+  
+</head>
+<body>
+  <div class="container">
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Carto Table Viewer</a>
+
+        </div>
+
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+          <form class="navbar-form navbar-right" action = "" method = "POST">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Cartouser" name="cartouser" value="{{
+              request.form.cartouser }}">
+              <input type="text" class="form-control" placeholder="Cartotable" name="cartotable" value="{{
+              request.form.cartotable }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Load data</button>
+          </form>
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+
+    {% if error %}
+    <div class="alert alert-danger">
+      <strong>Error!</strong> {{ error }}.
+    </div>
+    {% endif %}
+
+    {% if cartouser %}
+    <div id='cartocontent'>
+     <table class="table table-hover table-striped">
+        <thead>
+          <tr class="info">
+            {% for value in datarows.fields %}
+            <th>{{value}}</th>
+            {% endfor%}
+          </tr>
+        </thead>
+        <tbody>
+          {% for value in datarows['rows'] %}
+          <tr>
+            {% for k in value.values() %}
+            <td>{{ k }}</td>
+            {% endfor%}
+          </tr>
+          {% endfor%}
+        </tbody>
+      </table>
+    </div> <!-- /cartocontent -->
+    {% endif %}
+
+  </div><!-- /container -->
+
+</body>
+
+<!-- Bootstrap JavaScript -->
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+<!-- jQuery -->
+<script
+src="https://code.jquery.com/jquery-3.1.1.min.js"
+integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+crossorigin="anonymous"></script>
+
+
+<script
+src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+crossorigin="anonymous"></script>
+
+<!-- Pagination -->
+<script src="{{ url_for('static', filename='js/paginathing.js') }}"></script>
+<script type="text/javascript">
+  jQuery(document).ready(function($){
+    for (var i = 1; i <= 150; i++) {
+      $('.list-group').append('<li class="list-group-item"> Item ' + i + '</li>');
+    }
+
+    $('.table tbody').paginathing({
+      perPage: 25,
+      insertAfter: '#cartocontent'
+    });
+  });
+</script>
+
+</html>
