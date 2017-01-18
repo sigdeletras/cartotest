@@ -32,14 +32,14 @@ def home():
 
             datarows = json.loads(data)
             
-            return render_template('cartotableviewer.html', cartouser=cartouser, datarows = datarows)
+            return render_template('index.html', cartouser=cartouser, datarows = datarows)
 
-    return render_template('cartotableviewer.html', error=error)
+    return render_template('index.html', error=error)
 
 @app.errorhandler(500)
 def page_not_found500(e):
     error = 'Invalid Credentials. Please try again'
-    return render_template('cartotableviewer.html', error=error)
+    return render_template('index.html', error=error)
 
 
 if __name__ == '__main__':
