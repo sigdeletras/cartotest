@@ -3,7 +3,7 @@ Simple table viewer using the CartoDB SQL API. The web application is developed 
 
 ##Usage 
 - Visit the web [https://cartotableviewer.herokuapp.com/](https://cartotableviewer.herokuapp.com/)
-- Enter your Carto username and a name of a dataset.
+- Enter your Carto username and a name of a dataset. (e.g. sigdeletras festival_patios_cordoba)
 - Click 'Load Data'.
 
 ##Enviroment
